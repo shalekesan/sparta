@@ -11,7 +11,7 @@ Copyright (c) 2015 SECFORCE (Antonio Quina and Leonidas Stavliotis)
     You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
 '''
 
-import os, sys, urllib2, socket, time, datetime, locale, webbrowser, re	# for webrequests, screenshot timeouts, timestamps, browser stuff and regex
+import os, sys, urllib2, socket, time, datetime, locale, webbrowser, re, ssl # for webrequests, screenshot timeouts, timestamps, browser stuff and regex
 from PyQt4 import QtGui, QtCore
 from PyQt4.QtCore import *												# for QProcess
 import errno															# temporary for isHttpd
@@ -68,14 +68,21 @@ def isHttps(ip, port):
 #		print '\nresponse content: ' + str(r.read())
 		return True
 
-	except:	
+	except ssl.CertificateError:
+		return True
+
+	except:
 		reason = str(sys.exc_info()[1].reason)
 #		print reason
 #		if 'Interrupted system call' in reason:
 #			print 'caught exception. retry?'
 			
 		if reason == 'Forbidden':
-			return True	
+			return True
+
+		if 'certificate' in reason:
+			return True
+
 		return False
 
 		
