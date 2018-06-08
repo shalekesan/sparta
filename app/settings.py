@@ -352,11 +352,11 @@ class Settings():
 		self.brute_no_password_services = "oracle-sid,rsh,smtp-enum"
 
 		# tools
-		self.tools_nmap_stage1_ports = "T:80,443"
-		self.tools_nmap_stage2_ports = "T:25,135,137,139,445,1433,3306,5432,U:137,161,162,1434"
-		self.tools_nmap_stage3_ports = "T:23,21,22,110,111,2049,3389,8080,U:500,5060"
-		self.tools_nmap_stage4_ports = "T:0-20,24,26-79,81-109,112-134,136,138,140-442,444,446-1432,1434-2048,2050-3305,3307-3388,3390-5431,5433-8079,8081-29999"
-		self.tools_nmap_stage5_ports = "T:30000-65535"
+		self.tools_nmap_stage1_ports = "T:80,443,22,445"
+		self.tools_nmap_stage2_ports = "T:25,135,137,139,1433,1521,3306,4786,5432,U:137,161,162,1434"
+		self.tools_nmap_stage3_ports = "T:23,21,110,111,2049,3389,8080,U:500,5060"
+		self.tools_nmap_stage4_ports = "T:0-20,24,26-79,81-109,112-134,136,138,140-442,444,446-1432,1434-1520,1522-2048,2050-3305,3307-3388,3390-4785,4787-5431,5433-8079,8081-9999"
+		self.tools_nmap_stage5_ports = "T:10000-65535"
 
 		self.tools_path_nmap = "/usr/bin/nmap"
 		self.tools_path_hydra = "/usr/bin/hydra"
